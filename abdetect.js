@@ -65,29 +65,12 @@ function abDetect() {
                     blockedCount++;
                 }
 
-                if(element.parentNode) {
-                    element.parentNode.removeChild(element);
+                if(createdElements[i].parentNode) {
+                    createdElements[i].parentNode.removeChild(createdElements[i]);
                 }
             }
 
-            const globalObjects = [
-                'google_ad_client',
-                'adsbygoogle',
-                'AdBlock',
-                'adblock'
-            ];
-
-            let globalBlockedCount = 0;
-            for(let i in globalObjects) {
-                if(window[globalObjects[i]] === undefined || window[globalObjects[i]] === null) {
-                    globalBlockedCount++;
-                }
-            }
-
-            const elementBlocked = (blockedCount / createdElements.length) > 0.5;
-            const globalBlocked = globalBlockedCount > 0;
-
-            resolve(elementBlocked || globalBlocked);
+            resolve(blockedCount > 0);
         },200);
     });
 }
