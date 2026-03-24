@@ -3,7 +3,7 @@
 ``<script src="/path/to/abdetect.js"></script>``
 
 ```
-detectAdBlock().then((isBlocked) => {
+abDetect().then((isBlocked) => {
     if(isBlocked) {
         console.log('AdBlock detected');
     }
