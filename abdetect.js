@@ -14,20 +14,32 @@
 function abDetect() {
     return new Promise((resolve) => {
 
-        const testElements = [
+        const testElementsClasses = [
             'adsbox',
             'ad',
             'banner_ad',
             'advertisement',
-            'googleAd'
+            'googleAd',
+            'ads',
+            'banner-ad',
+            'google-ad'
         ];
 
-        const createdElements = [];
+        const testElementsIds = [
+            'ad',
+            'AdHeader',
+            'AdContainer',
+            'AD_Top',
+            'homead',
+            'ad-lead'
+        ];
+
+        let createdElements = [];
         let blockedCount = 0;
 
-        for(let i in testElements) {
-            const element = document.createElement('div');
-            element.className = testElements[i];
+        for(let i in testElementsClasses) {
+            let element = document.createElement('div');
+            element.className = testElementsClasses[i];
             element.innerHTML = '&nbsp;';
             element.style.cssText = ''+
                 'position: absolute;'+
@@ -42,18 +54,22 @@ function abDetect() {
             createdElements.push(element);
         }
 
-        const elementWithId = document.createElement('div');
-        elementWithId.id = 'ad';
-        elementWithId.innerHTML = '&nbsp;';
-        elementWithId.style.cssText = ''+
-            'position: absolute;'+
-            'top: -1000px;'+
-            'left: -1000px;'+
-            'width: 100px;'+
-            'height: 100px;'
-        ;
-        document.body.appendChild(elementWithId);
-        createdElements.push(elementWithId);
+        for(let i in testElementsIds) {
+            let element = document.createElement('div');
+            element.id = testElementsIds[i];
+            element.innerHTML = '&nbsp;';
+            element.style.cssText = ''+
+                'position: absolute;'+
+                'top: -1000px;'+
+                'left: -1000px;'+
+                'width: 100px;'+
+                'height: 100px;'+
+                'display: block;'+
+                'visibility: visible;'
+            ;
+            document.body.appendChild(element);
+            createdElements.push(element);
+        }
 
         setTimeout(() => {
             for(let i in createdElements) {
