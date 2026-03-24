@@ -1,7 +1,8 @@
 # abDetect
 
-<script src="/path/to/abdetect.js"></script>
+``<script src="/path/to/abdetect.js"></script>``
 
+```
 detectAdBlock().then((isBlocked) => {
     if(isBlocked) {
         console.log('AdBlock detected');
@@ -10,3 +11,4 @@ detectAdBlock().then((isBlocked) => {
         console.log('No AdBlock detected');
     }
 });
+```
