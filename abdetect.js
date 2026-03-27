@@ -14,6 +14,11 @@
 function abDetect() {
     return new Promise((resolve) => {
 
+        if(window.self !== window.top) {
+            resolve(false);
+            return;
+        }
+
         const testElementsClasses = [
             'adsbox',
             'ad',
